@@ -121,11 +121,11 @@ mount -o bind /sys "$MNT/sys"
 cp /etc/resolv.conf "$MNT/etc/resolv.conf" # Copy resolv from host for internet connection
 # Configure repositories for apk (edge main+community+testing for lots of useful and up-to-date software)
 mkdir -p "$MNT/etc/apk"
-echo "$REPO/v3.14/main/
-$REPO/v3.14/community/
+echo "$REPO/edge/main/
+$REPO/edge/community/
 $REPO/edge/testing/
 #Here comes a hack because Chromium isn't in edge
-$REPO/v3.14/community" > "$MNT/etc/apk/repositories"
+$REPO/edge/community" > "$MNT/etc/apk/repositories"
 # Create the script to start the gui
 echo "$STARTGUI" > "$MNT/startgui.sh"
 chmod +x "$MNT/startgui.sh"
