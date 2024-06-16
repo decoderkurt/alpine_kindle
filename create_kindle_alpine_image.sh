@@ -123,7 +123,7 @@ cp /etc/resolv.conf "$MNT/etc/resolv.conf" # Copy resolv from host for internet 
 mkdir -p "$MNT/etc/apk"
 echo "$REPO/v3.16/main/
 $REPO/v3.16/community/
-$REPO/v3.16/testing/
+$REPO/edge/testing/
 #Here comes a hack because Chromium isn't in edge
 $REPO/v3.16/community" > "$MNT/etc/apk/repositories"
 # Create the script to start the gui
