@@ -26,7 +26,8 @@ apk update
 apk upgrade
 cat /etc/alpine-release
 apk add xorg-server-xephyr xwininfo xdotool xinput dbus-x11 sudo bash nano git
-apk add desktop-file-utils gtk-engines consolekit gtk-murrine-engine caja caja-extensions marco gnome-themes-extra
+apk add desktop-file-utils gtk-engines consolekit gtk-murrine-engine caja caja-extensions marco
+apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/v3.16/community/ gnome-themes-extra gnome-themes-extra-lang
 apk add \$(apk search mate -q | grep -v '\-dev' | grep -v '\-lang' | grep -v '\-doc')
 apk add \$(apk search -q ttf- | grep -v '\-doc')
 apk add onboard chromium
