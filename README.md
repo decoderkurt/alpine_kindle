@@ -1,4 +1,6 @@
 # 패키지 만들기 전 설치
+sudo apt install qemu-system
+
 sudo apt-get install -y qemu-user-static binfmt-support zip
 
 이후 setup-keymap으로 한글 키보드 설치 
