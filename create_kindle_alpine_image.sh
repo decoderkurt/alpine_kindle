@@ -75,13 +75,13 @@ killall Xephyr'
 # read in the APKINDEX what version it is currently to get the correct download link. It is extracted in /tmp and deleted
 # again at the end of the script
 echo "Determining version of apk-tools-static"
-curl "$REPO/v3.14/main/armhf/APKINDEX.tar.gz" --output /tmp/APKINDEX.tar.gz
+curl "$REPO/latest-stable/main/armhf/APKINDEX.tar.gz" --output /tmp/APKINDEX.tar.gz
 tar -xzf /tmp/APKINDEX.tar.gz -C /tmp
 APKVER="$(cut -d':' -f2 <<<"$(grep -A 5 "P:apk-tools-static" /tmp/APKINDEX | grep "V:")")" # Grep for the version in APKINDEX
 rm /tmp/APKINDEX /tmp/APKINDEX.tar.gz /tmp/DESCRIPTION # Remove what we downloaded and extracted
 echo "Version of apk-tools-static is: $APKVER"
 echo "Downloading apk-tools-static"
-curl "$REPO/v3.14/main/armv7/apk-tools-static-$APKVER.apk" --output "/tmp/apk-tools-static.apk"
+curl "$REPO/latest-stable/main/armv7/apk-tools-static-$APKVER.apk" --output "/tmp/apk-tools-static.apk"
 tar -xzf "/tmp/apk-tools-static.apk" -C /tmp # extract apk-tools-static to /tmp
 
 
@@ -106,7 +106,7 @@ mount -o loop -t ext3 "$IMAGE" "$MNT"
 # mounted image. We use the arm-version of it to end up with a root filesystem for arm. Also the "edge" repository is used
 # to end up with the newest software, some of which is very useful for Kindles
 echo "Bootstrapping Alpine"
-qemu-arm-static /tmp/sbin/apk.static -X "$REPO/v3.14/main" -U --allow-untrusted --root "$MNT" --initdb add alpine-base
+qemu-arm-static /tmp/sbin/apk.static -X "$REPO/edge/main" -U --allow-untrusted --root "$MNT" --initdb add alpine-base
 
 
 # COMPLETE IMAGE MOUNTING FOR CHROOT
@@ -125,7 +125,7 @@ echo "$REPO/edge/main/
 $REPO/edge/community/
 $REPO/edge/testing/
 #Here comes a hack because Chromium isn't in edge
-$REPO/edge/community" > "$MNT/etc/apk/repositories"
+$REPO/latest-stable/community" > "$MNT/etc/apk/repositories"
 # Create the script to start the gui
 echo "$STARTGUI" > "$MNT/startgui.sh"
 chmod +x "$MNT/startgui.sh"
