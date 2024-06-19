@@ -107,7 +107,7 @@ mount -o loop -t ext3 "$IMAGE" "$MNT"
 # mounted image. We use the arm-version of it to end up with a root filesystem for arm. Also the "edge" repository is used
 # to end up with the newest software, some of which is very useful for Kindles
 echo "Bootstrapping Alpine"
-qemu-arm-static /tmp/sbin/apk.static -X "$REPO/edge/main" -U --allow-untrusted --root "$MNT" --initdb add alpine-base
+qemu-arm-static /tmp/sbin/apk.static -X "$REPO/$REV/main" -U --allow-untrusted --root "$MNT" --initdb add alpine-base
 
 
 # COMPLETE IMAGE MOUNTING FOR CHROOT
@@ -122,9 +122,9 @@ mount -o bind /sys "$MNT/sys"
 cp /etc/resolv.conf "$MNT/etc/resolv.conf" # Copy resolv from host for internet connection
 # Configure repositories for apk (edge main+community+testing for lots of useful and up-to-date software)
 mkdir -p "$MNT/etc/apk"
-echo "$REPO/edge/main/
-$REPO/edge/community/
-$REPO/edge/testing/
+echo "$REPO/$REV/main/
+$REPO/$REV/community/
+$REPO/$REV/testing/
 #Here comes a hack because Chromium isn't in edge
 $REPO/$REV/community" > "$MNT/etc/apk/repositories"
 # Create the script to start the gui
