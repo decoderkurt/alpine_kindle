@@ -15,10 +15,8 @@
 # STARGUI: This is the script that gets executed inside the container when the GUI is started. Xepyhr is used to render the desktop
 #          inside a window, that has the correct name to be displayed in fullscreen by the kindle's awesome windowmanager
 REPO="http://dl-cdn.alpinelinux.org/alpine"
-REV="v3.16"
 MNT="/mnt/alpine"
 IMAGE="./alpine.ext3"
-#IMAGESIZE=2048 #Megabytes
 IMAGESIZE=4096 #Megabytes
 ALPINESETUP="source /etc/profile
 echo kindle > /etc/hostname
@@ -77,15 +75,13 @@ killall Xephyr'
 # read in the APKINDEX what version it is currently to get the correct download link. It is extracted in /tmp and deleted
 # again at the end of the script
 echo "Determining version of apk-tools-static"
-#curl "$REPO/latest-stable/main/armhf/APKINDEX.tar.gz" --output /tmp/APKINDEX.tar.gz
-curl "$REPO/$REV/main/armhf/APKINDEX.tar.gz" --output /tmp/APKINDEX.tar.gz
+curl "$REPO/latest-stable/main/armhf/APKINDEX.tar.gz" --output /tmp/APKINDEX.tar.gz
 tar -xzf /tmp/APKINDEX.tar.gz -C /tmp
 APKVER="$(cut -d':' -f2 <<<"$(grep -A 5 "P:apk-tools-static" /tmp/APKINDEX | grep "V:")")" # Grep for the version in APKINDEX
 rm /tmp/APKINDEX /tmp/APKINDEX.tar.gz /tmp/DESCRIPTION # Remove what we downloaded and extracted
 echo "Version of apk-tools-static is: $APKVER"
 echo "Downloading apk-tools-static"
-#curl "$REPO/latest-stable/main/armv7/apk-tools-static-$APKVER.apk" --output "/tmp/apk-tools-static.apk"
-curl "$REPO/$REV/main/armv7/apk-tools-static-$APKVER.apk" --output "/tmp/apk-tools-static.apk"
+curl "$REPO/latest-stable/main/armv7/apk-tools-static-$APKVER.apk" --output "/tmp/apk-tools-static.apk"
 tar -xzf "/tmp/apk-tools-static.apk" -C /tmp # extract apk-tools-static to /tmp
 
 
@@ -129,8 +125,7 @@ echo "$REPO/edge/main/
 $REPO/edge/community/
 $REPO/edge/testing/
 #Here comes a hack because Chromium isn't in edge
-#$REPO/latest-stable/community" > "$MNT/etc/apk/repositories"
-$REPO/$REV/community" > "$MNT/etc/apk/repositories"
+$REPO/latest-stable/community" > "$MNT/etc/apk/repositories"
 # Create the script to start the gui
 echo "$STARTGUI" > "$MNT/startgui.sh"
 chmod +x "$MNT/startgui.sh"
