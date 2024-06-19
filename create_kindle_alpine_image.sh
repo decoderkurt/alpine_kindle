@@ -107,7 +107,7 @@ mount -o loop -t ext3 "$IMAGE" "$MNT"
 # mounted image. We use the arm-version of it to end up with a root filesystem for arm. Also the "edge" repository is used
 # to end up with the newest software, some of which is very useful for Kindles
 echo "Bootstrapping Alpine"
-qemu-arm-static /tmp/sbin/apk.static -X "$REPO/$REV/main" -U --allow-untrusted --root "$MNT" --initdb add alpine-base
+qemu-arm-static /tmp/sbin/apk.static -X "$REPO/edge/main" -U --allow-untrusted --root "$MNT" --initdb add alpine-base
 
 
 # COMPLETE IMAGE MOUNTING FOR CHROOT
