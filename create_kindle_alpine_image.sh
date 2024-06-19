@@ -122,8 +122,8 @@ mount -o bind /sys "$MNT/sys"
 cp /etc/resolv.conf "$MNT/etc/resolv.conf" # Copy resolv from host for internet connection
 # Configure repositories for apk (edge main+community+testing for lots of useful and up-to-date software)
 mkdir -p "$MNT/etc/apk"
-echo "$REPO/$REV/main/
-$REPO/$REV/community/
+echo "$REPO/edge/main/
+$REPO/edge/community/
 $REPO/edge/testing/
 #Here comes a hack because Chromium isn't in edge
 $REPO/v3.17/community" > "$MNT/etc/apk/repositories"
