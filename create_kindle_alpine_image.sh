@@ -20,7 +20,7 @@ MNT="/mnt/alpine"
 IMAGE="./alpine.ext3"
 #IMAGESIZE=2048 #Megabytes
 IMAGESIZE=4096 #Megabytes
-ALPINESETUP="source /etc/profile"
+ALPINESETUP="source /etc/profile
 echo kindle > /etc/hostname
 echo \"nameserver 8.8.8.8\" > /etc/resolv.conf
 mkdir /run/dbus
@@ -125,7 +125,7 @@ mount -o bind /sys "$MNT/sys"
 cp /etc/resolv.conf "$MNT/etc/resolv.conf" # Copy resolv from host for internet connection
 # Configure repositories for apk (edge main+community+testing for lots of useful and up-to-date software)
 mkdir -p "$MNT/etc/apk"
-echo "$REPO/edge/main/"
+echo "$REPO/edge/main/
 $REPO/edge/community/
 $REPO/edge/testing/
 #Here comes a hack because Chromium isn't in edge
