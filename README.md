@@ -1,4 +1,5 @@
 # 패키지 만들기 전 설치
+sudo apt-get install -y qemu-user-static zip
 sudo apt-get install -y qemu-user-static binfmt-support zip
 
 apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/v3.16/community/ gnome-themes-extra-lang
