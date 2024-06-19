@@ -15,7 +15,7 @@
 # STARGUI: This is the script that gets executed inside the container when the GUI is started. Xepyhr is used to render the desktop
 #          inside a window, that has the correct name to be displayed in fullscreen by the kindle's awesome windowmanager
 REPO="http://dl-cdn.alpinelinux.org/alpine"
-REV="v3.12"
+REV="v3.16"
 MNT="/mnt/alpine"
 IMAGE="./alpine.ext3"
 IMAGESIZE=4096 #Megabytes
@@ -126,7 +126,7 @@ echo "$REPO/$REV/main/
 $REPO/$REV/community/
 $REPO/edge/testing/
 #Here comes a hack because Chromium isn't in edge
-$REPO/$REV/community" > "$MNT/etc/apk/repositories"
+$REPO/v3.17/community" > "$MNT/etc/apk/repositories"
 # Create the script to start the gui
 echo "$STARTGUI" > "$MNT/startgui.sh"
 chmod +x "$MNT/startgui.sh"
