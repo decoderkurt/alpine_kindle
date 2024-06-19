@@ -18,7 +18,7 @@ REPO="http://dl-cdn.alpinelinux.org/alpine"
 REV="v3.16"
 MNT="/mnt/alpine"
 IMAGE="./alpine.ext3"
-IMAGESIZE=4096 #Megabytes
+IMAGESIZE=2048 #Megabytes
 ALPINESETUP="source /etc/profile
 echo kindle > /etc/hostname
 echo \"nameserver 8.8.8.8\" > /etc/resolv.conf
