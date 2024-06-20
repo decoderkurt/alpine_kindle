@@ -126,7 +126,7 @@ echo "$REPO/$REV/main/
 $REPO/$REV/community/
 $REPO/edge/testing/
 #Here comes a hack because Chromium isn't in edge
-$REPO/v3.17/community" > "$MNT/etc/apk/repositories"
+$REPO/$REV/community" > "$MNT/etc/apk/repositories"
 # Create the script to start the gui
 echo "$STARTGUI" > "$MNT/startgui.sh"
 chmod +x "$MNT/startgui.sh"
