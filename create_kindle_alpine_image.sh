@@ -15,7 +15,7 @@
 # STARGUI: This is the script that gets executed inside the container when the GUI is started. Xepyhr is used to render the desktop
 #          inside a window, that has the correct name to be displayed in fullscreen by the kindle's awesome windowmanager
 REPO="http://dl-cdn.alpinelinux.org/alpine"
-REV="v3.12"
+REV="v3.17"
 MNT="/mnt/alpine"
 IMAGE="./alpine.ext3"
 IMAGESIZE=2048 #Megabytes
@@ -33,8 +33,8 @@ apk add desktop-file-utils gtk-engines consolekit gtk-murrine-engine caja caja-e
 apk add \$(apk search mate -q | grep -v '\-dev' | grep -v '\-lang' | grep -v '\-doc')
 apk add \$(apk search -q ttf- | grep -v '\-doc')
 #apk add onboard chromium
-apk add onboard
-
+#apk add onboard
+apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/v3.17/community/ onboard
 apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/v3.17/main/ cjson numactl mbedtls aom dav1d flac libffi icu libcrypto3 icu-libs
 apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/v3.17/community/ chromium libressl x265 librsvg
 
