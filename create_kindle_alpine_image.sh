@@ -34,8 +34,8 @@ apk add \$(apk search -q ttf- | grep -v '\-doc')
 #apk add onboard chromium
 apk add onboard
 
-apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/v3.17/main/ cjson-dev numactl-dev mbedtls-dev aom-dev dav1d-dev flac-dev libffi-dev icu-dev libcrypto3 icu-libs
-apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/v3.17/community/  libressl-dev x265-dev chromium
+apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/v3.17/main/ cjson numactl mbedtls aom dav1d flac libffi icu libcrypto3 icu-libs
+apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/v3.17/community/ chromium libressl x265 
 
 adduser alpine -D
 echo -e \"alpine\nalpine\" | passwd alpine
