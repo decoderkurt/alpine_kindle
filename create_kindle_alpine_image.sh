@@ -38,7 +38,8 @@ apk add onboard
 #apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/v3.17/community/ onboard
 #apk add --update --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/v3.17/main/ cjson numactl mbedtls aom dav1d flac libffi icu libcrypto3 icu-libs
 apk add --update --no-cache cjson numactl mbedtls aom dav1d flac libffi icu libcrypto3 icu-libs
-apk add --update --no-cache chromium libressl x265 librsvg
+apk add --update --no-cache libressl x265 librsvg
+apk add --update --no-cache  --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community/ chromium
 
 adduser alpine -D
 echo -e \"alpine\nalpine\" | passwd alpine
